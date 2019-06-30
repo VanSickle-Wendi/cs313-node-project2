@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Expense Types</title>
+      <meta charset="UTF-8">
+      <meta name ="author" content="Wendi Van Sickle">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="../stylesheets/bootstrap.css" type="text/css" rel="stylesheet" media="screen"/> 
+<!--      <link href="../stylesheets/my_css.css" type="text/css" rel="stylesheet" media="screen"/>      -->
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <form id="expenseTypeList">
+            <input type="number" id="expenseType_id">
+            <button type="submit">Get Details</button>
+        </form>
+        
+        <table class="table table-condensed">
+            <tr>
+                <td>Categories</td>
+                <td id="category"></td>
+            </tr>
+        </table>
+        
+        <button id="getExpenseAll">Get Categories</button>
+        <div id="category1"></div><!--
+        
+        <button id="getChildren">Get Children</button>
+        <div id="children"></div>-->
+        
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+        <script src="expenseTypesAjax.js"></script>
+    </body>
+</html>
+

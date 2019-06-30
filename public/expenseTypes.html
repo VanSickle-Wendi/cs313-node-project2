@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Expense Types</title>
+      <meta charset="UTF-8">
+      <meta name ="author" content="Wendi Van Sickle">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="../stylesheets/bootstrap.css" type="text/css" rel="stylesheet" media="screen"/> 
+      <!--      <link href="../stylesheets/my_css.css" type="text/css" rel="stylesheet" media="screen"/>      -->
+      <!--    
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+   </head>
+   <body class="container">
+      <div class="row">
+         <div class="col-sm">
+            <h1 class="display-1">Common Expenses</h1>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm">
+            <form id="expenseTypeList">
+               <input type="hidden" id="expenseType_id" value="1">
+               <!--         <button type="submit" class="btn btn-primary btn-sm">Get Details</button>-->
+            </form>
+
+            <table class="table table-condensed" >
+               <tr>
+                  <td id="category"></td>
+               </tr>
+            </table>
+         </div>
+         <div class="col-sm">
+            <!--      <button id="getExpenseAll" class="btn btn-primary btn-sm">Get Categories</button>-->
+            <table class="table table-condensed table-striped table-bordered" >
+               <thead>
+                  <tr>
+                     <th scope="col">Types of Expense &nbsp; &nbsp;<button id="getExpenseAll" class="btn btn-primary btn-sm">See list</button></th>
+                  </tr>
+               </thead>
+               <tbody id="category1">
+
+               </tbody>
+
+            </table>      
+            
+         </div>
+         <div class="col-sm"></div>
+      </div>
+
+      <!--      <div id="category1"></div>
+            
+            <button id="getChildren">Get Children</button>
+            <div id="children"></div>-->
+
+      <script
+         src="https://code.jquery.com/jquery-3.4.1.min.js"
+         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+      <script src="expenseTypesAjax.js"></script>
+   </body>
+</html>
