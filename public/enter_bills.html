@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
    <head>
-      <title>Expense Types</title>
+      <title>Search Bills</title>
       <meta charset="UTF-8">
       <meta name ="author" content="Wendi Van Sickle">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="../stylesheets/bootstrap.css" type="text/css" rel="stylesheet" media="screen"/> 
       <link href="../stylesheets/cover.css" rel="stylesheet">
+      <script src="enter_billsAjax.js"></script>
    </head>
 
 
@@ -14,7 +15,7 @@
       <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
          <header class="masthead">
             <div class="inner">
-               <h3 class="masthead-brand">Common Expenses</h3>
+               <h3 class="masthead-brand">Enter a Bill</h3>
                <nav class="nav nav-masthead justify-content-center">
                   <a class="nav-link active" href="cover.html">Home</a>
                   <a class="nav-link" href="enter_bills.html">Enter a Bill</a>
@@ -24,24 +25,20 @@
          </header>          
 
          <div class="row">
-            <div class="col-sm"></div>
             <div class="col-sm">
-               <form id="expenseTypeList">
-                  <input type="hidden" id="expenseType_id" value="1">
-                  <table class="table table-condensed table-striped table-bordered" >
-                     <thead>
-                        <tr>
-                           <th scope="col"><button id="getExpenseAll" class="btn btn-primary btn-sm">See types of expenses</button></th>
-                        </tr>
-                     </thead>
-                     <tbody id="category1">
 
-                     </tbody>
 
-                  </table>      
-               </form>
+               <input type="text" id="creditor" placeholder="Monthly Bill"> <button onclick="searchBills()">Find a Bill</button><br>
+
+               <div>
+                  <h2>Results</h2>
+                  <ul id="ulbudget">
+                  </ul>
+               </div>               
+
+
             </div>
-            <div class="col-sm"></div>
+
          </div>
       </div>
 

@@ -3,16 +3,33 @@ const app = express();
 const path = require('path');
 const pg = require('pg');
 
+const budgetController = require("./controllers/budgetController.js");
+
 app.set('port', (process.env.PORT || 5000));
 
 const { Pool } = require('pg');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 const connectionString = process.env.DATABASE_URL || 'postgres://yzenztejzuqtcn:45b7db1c822f4f51a191cf9516b4c7a5fdf5bcaa2fc0b357bcce3d6d8bb0c078@ec2-107-21-216-112.compute-1.amazonaws.com:5432/d9lqqa5vmtg0r2?ssl=true';
 
 const pool = new Pool({connectionString: connectionString});
+
+app.get("/search", budgetController.search);
+
+app.get('/register');
+app.get('/login');
+app.get('/bills');
+
+app.get('/one_bill');
+
+
+app.get('/income');
+app.get('/purchase');
+app.get('/goals');
 
 app.get('/getExpense_Type', getExpense_Type);
 

@@ -10,20 +10,14 @@ CREATE TABLE display (
 );
 
 INSERT INTO expense_type (category)
-     VALUES ('House Payment'),
-            ('Car Payment'),
-            ('Car Fuel'),
-            ('Credit Card Payment'),
-            ('Water Bill'),
-            ('Phone Bill'),
-            ('Electricity'),
-            ('Gas'),
-            ('Groceries'),
+     VALUES ('House'),
+            ('Auto'),
+            ('Credit Card'),
+            ('Utility'),
+            ('Food'),
             ('Taxes'),
-            ('Car Insurance'),
-            ('Health Insurance'),
             ('Tithing'),
-            ('Donations'),
+            ('Donation'),
             ('Medical'),
             ('Entertainment');
 
@@ -37,23 +31,34 @@ INSERT INTO expense_type (category)
             ('7', '1'),
             ('8', '1'),
             ('9', '1'),
-            ('10', '1'),
-            ('11', '1'),
-            ('12', '1'),
-            ('13', '1'),
-            ('14', '1'),
-            ('15', '1'),
-            ('16', '1');
+            ('10', '1');
 
 
-SELECT * FROM expense_type;
+CREATE TABLE monthly_bills (
+   id SERIAL PRIMARY KEY,
+   e_type INT REFERENCES expense_type(id),
+   creditor VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE amount (
+   id SERIAL PRIMARY KEY,
+   m_bill INT REFERENCES monthly_bills(id),
+   due MONEY,
+   total_owed MONEY
+);
 
 
-   housing_display INT REFERENCES expense_type(id),
-   auto_display INT REFERENCES expense_type(id),
-   credit_display INT REFERENCES expense_type(id),
-   utility_display INT REFERENCES expense_type(id),
-   food_display INT REFERENCES expense_type(id),
-   tax_display INT REFERENCES expense_type(id),
-   health_display INT REFERENCES expense_type(id),
-   entertainment_display INT REFERENCES expense_type(id);
+ INSERT INTO monthly_bills (e_type, creditor)
+     VALUES ('1', 'Mortgage'),
+            ('2', 'Car Payment'),
+            ('3', 'Chase'),
+            ('4', 'Water Bill');
+
+ INSERT INTO amount (m_bill, due, total_owed)
+     VALUES ('1', '1250.95', '245,577.67'),
+            ('2', '124.44', '3,618.28'),
+            ('3', '50', '2,105'),
+            ('4', '92.63', '0');
+
+
+SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor = 'Mortgage';
