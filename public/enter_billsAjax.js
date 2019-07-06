@@ -12,7 +12,7 @@ function searchBills() {
 		for (var i = 0; i < data.list.length; i++) {
 			var budget = data.list[i];
 
-			$("#ulbudget").append("<li>" + budget.category + " " + budget.creditor + ":" + budget.due + " " + budget.total_owed + "</li>");
+			$("#ulbudget").append("<li>" + budget.e_type + " " + budget.creditor + ":" + budget.due + " " + budget.total_owed + "</li>");
 		}
 
 	})
