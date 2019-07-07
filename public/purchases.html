@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
    <head>
-      <title>Search Bills</title>
+      <title>Future Purchases</title>
       <meta charset="UTF-8">
       <meta name ="author" content="Wendi Van Sickle">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +15,10 @@
       <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
          <header class="masthead">
             <div class="inner">
-               <h3 class="masthead-brand">Find a Bill</h3>
+               <h3 class="masthead-brand">Add a Bill</h3>
                <nav class="nav nav-masthead justify-content-center">
                   <a class="nav-link active" href="cover.html">Home</a>
-                  <a class="nav-link" href="enter_bills.html">Find a Bill</a>
+                  <a class="nav-link" href="enter_bills.html">Search a Bill</a>
                   <a class="nav-link" href="add_bills.html">Add a Bill</a>
                   <a class="nav-link" href="purchases.html">Future Purchases</a>
                </nav>
@@ -27,11 +27,13 @@
 
          <div class="row">
             <div class="col-sm">
-               <input type="text" id="creditor" placeholder="Monthly Bill"> <button onclick="searchBills()">Find a Bill</button><br>
+
+               <input type="text" id="item" placeholder="Future Purchase"> <button onclick="addPurchase()">Add Future Purchase</button><br>
                <div>
                   <h2>Results</h2>
-                  <table class="table table-condensed table-striped table-bordered" id="tablebudget">
-                  </table>                  
+                  <table class="table table-condensed table-striped table-bordered" id="tablePurchase">
+                  </table>
+                 
                </div>               
             </div>
          </div>
@@ -44,3 +46,4 @@
       <script src="expenseTypesAjax.js"></script>
    </body>
 </html>
+

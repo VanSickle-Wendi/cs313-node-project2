@@ -60,5 +60,23 @@ CREATE TABLE amount (
             ('3', '50', '2,105'),
             ('4', '92.63', '0');
 
+CREATE TABLE purchase (
+   id SERIAL PRIMARY KEY,
+   item VARCHAR(50) NOT NULL,
+   cost MONEY
+);
+
+INSERT INTO purchase (item, cost)
+   VALUES ('Car for Trace', '5,000');
+
 
 SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor = 'Mortgage';
+
+BEGIN;
+INSERT INTO monthly_bills (e_type, creditor)
+     VALUES ('5', 'Groceries');
+INSERT INTO amount (m_bill, due, total_owed)
+     VALUES ('5', '175', '0');
+COMMIT;
+
+SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor = 'Groceries';

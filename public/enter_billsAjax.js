@@ -12,10 +12,10 @@ function searchBills() {
 		for (var i = 0; i < data.list.length; i++) {
 			var budget = data.list[i];
 
-			$("#ulbudget").append("<li>" + budget.e_type + " " + budget.creditor + ":" + budget.due + " " + budget.total_owed + "</li>");
+			$("#tablebudget").append("<thead><tr><th scope='col'>Category</th><th scope='col'>Monthly Bill</th><th scope='col'>Monthly Payment</th><th scope='col'>Current Balance</th></tr></thead><tr><td>" + budget.e_type + "</td>" + "<td>" + budget.creditor + "</td>" + "<td>" + budget.due + "</td>" + "<td>" + budget.total_owed + "</td></tr>");
 		}
 
-	})
-}
+	});
+};
 
 
