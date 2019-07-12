@@ -16,7 +16,6 @@
             <div class="inner">
                <h3 class="masthead-brand">Budget and Planning</h3>
                <nav class="nav nav-masthead justify-content-center">
-                  <a class="nav-link active" href="cover.html">Home</a>
                   <a class="nav-link" href="find_bills.html">Find a Bill</a>
                   <a class="nav-link" href="add_bills">Add a Bill</a>
                   <a class="nav-link" href="purchases.html">Future Purchases</a>
@@ -26,22 +25,10 @@
 
          <main role="main" class="inner cover">
             <h1 class="cover-heading">Start Your Plan</h1><br><br>
-            <div class="row">
-               <div class="col-sm"></div>
-               <div class="col-sm">
-                  <form id="expenseTypeList">
-                     <input type="hidden" id="expenseType_id" value="1">
-                     <p class="lead"><button class="btn btn-lg btn-secondary" id="getExpenseAll">Common Expenses</button></p><br><br>
-                     <table class="table table-condensed table-striped table-bordered" >
-
-                        <tbody id="category1">
-
-                        </tbody>
-                     </table>      
-                  </form>
-               </div>
-               <div class="col-sm"></div>
-            </div>           
+<!--            <p class="lead" id="cover_text">What types of expenses should you plan for?</p>-->
+            <p class="lead">
+               <a href="expenseTypes.html" class="btn btn-lg btn-secondary">Common Expenses</a>
+            </p>
          </main>
 
          <footer class="mastfoot mt-auto">
@@ -50,10 +37,5 @@
             </div>
          </footer>
       </div>
-      <script
-         src="https://code.jquery.com/jquery-3.4.1.min.js"
-         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"></script>
-      <script src="expenseTypesAjax.js"></script>
    </body>
 </html>

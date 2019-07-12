@@ -32,10 +32,11 @@ function addPurchase(item, callback) {
    console.log("Adding purchase " + item);
 
    var sql2 = "INSERT INTO purchase (item) VALUES ('${item.item}) WHERE purchase.item=$1::text;";
+   
+//   "SELECT item, cost FROM purchase WHERE purchase.item=$1::text;";
+   var params2 = [item];
 
-   var params = [item];
-
-   pool.query(sql2, params, function (err, db_results) {
+   pool.query(sql2, params2, function (err, db_results) {
 
       if (err) {
          throw err;
