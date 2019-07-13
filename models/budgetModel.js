@@ -6,7 +6,7 @@ const db_url = process.env.DATABASE_URL;
 // console.log("DB URL: " + db_url);
 const pool = new Pool({connectionString: db_url});
 
-function searchBills(creditor, callback) {
+function findBills(creditor, callback) {
    console.log("Searching the DB for creditor: " + creditor);
 
    var sql = "SELECT category e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor=$1::text";
@@ -155,7 +155,7 @@ function getExpenseAllFromDb(id, callback) {
 
 module.exports = {
 
-   searchBills: searchBills,
+   findBills: findBills,
 //   addBillToDb: addBillToDb,
    getExpense_TypeFromDb: getExpense_TypeFromDb,
    getExpenseAllFromDb: getExpenseAllFromDb,

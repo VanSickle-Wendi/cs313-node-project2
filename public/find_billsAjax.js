@@ -1,11 +1,11 @@
 
-function searchBills() {
+function findBills() {
 	console.log("Searching by creditor...");
 
 	var creditor = $("#creditor").val();
 	console.log("Creditor: " + creditor);
 
-	$.get("/search", {creditor:creditor}, function(data) {
+	$.get("/find", {creditor:creditor}, function(data) {
 		console.log("Back from the server with:");
 		console.log(data);
 

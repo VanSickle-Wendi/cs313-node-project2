@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.get("/search", budgetController.search);
+app.get("/find", budgetController.find);
 //app.post('/addBills', budgetController.addBills);
 
 app.get('/getExpense_Type', budgetController.getExpense_Type);

@@ -1,11 +1,11 @@
 const budgetModel = require("../models/budgetModel.js");
 
 
-function search(req, res) {
+function find(req, res) {
 
    var creditor = req.query.creditor;
 
-   budgetModel.searchBills(creditor, function (error, results) {
+   budgetModel.findBills(creditor, function (error, results) {
       res.json(results);
    });
 }
@@ -81,7 +81,7 @@ function getExpenseAll(req, res) {
 
 
 module.exports = {
-   search: search,
+   find: find,
 //      addBills: addBills,
    getExpense_Type: getExpense_Type,
    getExpenseAll: getExpenseAll,
