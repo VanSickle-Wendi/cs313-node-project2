@@ -19,3 +19,39 @@ function searchBills() {
 };
 
 
+
+//function listBills() {
+//	console.log("Listing Catagories");
+//
+//	var creditor = 'Mortgage';
+//	console.log("Creditor: " + creditor);
+//
+//	$.get("/list", {creditor:creditor}, function(data) {
+//		console.log("Back from the server with:");
+//		console.log(data);
+//
+//		for (var i = 0; i < data.list.length; i++) {
+//			var budget = data.list[i];
+//
+//			$("#tableList").append("<thead><tr><th scope='col'>Monthly Bill</th></tr></thead><tr><td>" + budget.creditor + "</td></tr>");
+//		}
+//
+//	});
+//};
+
+
+function listBills() {
+	console.log("Listing Catagories");
+
+	$.get("/list", function(data) {
+		console.log("Back from the server with:");
+		console.log(data);
+
+		for (var i = 0; i < data.list.length; i++) {
+			var budget = data.list[i];
+
+			$("#tableList").append("<tr><td>" + budget.creditor + "</td></tr>");
+		}
+
+	});
+};

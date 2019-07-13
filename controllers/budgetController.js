@@ -10,6 +10,23 @@ function search(req, res) {
    });
 }
 
+//function list(req, res) {
+//   var creditor = req.query.creditor;
+//
+//   budgetModel.listBills(creditor, function (error, results) {
+//      res.json(results);
+//   });   
+//}
+
+function list(req, res) {
+
+   budgetModel.listBills(function (error, result) {
+      res.status(200).json(result);
+   });   
+}
+
+
+
 
 function purchase(req, res) {
 
@@ -68,5 +85,6 @@ module.exports = {
 //      addBills: addBills,
    getExpense_Type: getExpense_Type,
    getExpenseAll: getExpenseAll,
-   purchase: purchase
+   purchase: purchase,
+   list:list
 };

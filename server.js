@@ -24,6 +24,8 @@ app.get('/getExpenseAll/:id', budgetController.getExpenseAll);
 
 app.get('/purchase', budgetController.purchase);
 
+app.get('/list', budgetController.list);
+
 
 
 

@@ -28,6 +28,52 @@ function searchBills(creditor, callback) {
    });
 }
 
+//function listBills(creditor, callback) {
+//   console.log("Searching the DB for creditor: " + creditor);
+//
+//   var sql = "SELECT creditor FROM monthly_bills;";
+//
+//   var params = [creditor];
+//
+//   pool.query(sql, params, function (err, db_results) {
+//
+//      if (err) {
+//         throw err;
+//      } else {
+//         var results = {
+//            success: true,
+//            list: db_results.rows
+//         };
+//
+//         callback(null, results);
+//      }
+//   });
+//}
+
+
+function listBills(callback) {
+
+   var sql = "SELECT creditor FROM monthly_bills;";
+
+   pool.query(sql, function (err, db_results) {
+
+      if (err) {
+         throw err;
+      } else {
+         var results = {
+            success: true,
+            list: db_results.rows
+         };
+
+         callback(null, results);
+      }
+   });
+}
+
+
+
+
+
 function addPurchase(item, callback) {
    console.log("Adding purchase " + item);
 
@@ -113,7 +159,8 @@ module.exports = {
 //   addBillToDb: addBillToDb,
    getExpense_TypeFromDb: getExpense_TypeFromDb,
    getExpenseAllFromDb: getExpenseAllFromDb,
-   addPurchase: addPurchase
+   addPurchase: addPurchase,
+   listBills: listBills
 };
 
 
