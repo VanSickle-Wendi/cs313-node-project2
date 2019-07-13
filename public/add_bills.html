@@ -7,7 +7,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="../stylesheets/bootstrap.css" type="text/css" rel="stylesheet" media="screen"/> 
       <link href="../stylesheets/cover.css" rel="stylesheet">
-      <script src="enter_billsAjax.js"></script>
    </head>
 
 
@@ -28,8 +27,8 @@
             <h1 class="cover-heading">New Bill</h1><br><br>
             <div class="row">
                <div class="col-sm">
-                  <form method="post">
-                     <input type="text" id="add_creditor" placeholder="New Bill"> <button class="btn btn-lg btn-secondary" onclick="addBills()">Add a Bill</button><br></form> 
+                  <form method="post" id="newBillForm">
+                     <input type="text" id="creditor" placeholder="New Bill"> <button type="submit" class="btn btn-lg btn-secondary">Add a Bill</button><br></form> 
                   <div>
                      <table class="table table-condensed table-striped table-bordered" id="tableAddBill">
                      </table>

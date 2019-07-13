@@ -51,7 +51,7 @@ function findBills(creditor, callback) {
 //}
 
 
-function listBills(callback) {
+function listBillsDb(callback) {
 
    var sql = "SELECT creditor FROM monthly_bills;";
 
@@ -102,7 +102,7 @@ function addPurchase(item, callback) {
 //function addBillToDb(add_creditor, callback) {
 //   console.log("Inserting " + add_creditor);
 //
-//   var sql2 = "BEGIN; INSERT INTO monthly_bills (e_type, @creditor) VALUES ('5', `add_creditor``); INSERT INTO amount (m_bill, due, total_owed) VALUES ('5', '175', '0'); COMMIT;";
+//   var sql2 = "INSERT INTO monthly_bills (creditor) VALUES ($1);";
 //
 //   var params = [add_creditor];
 //
@@ -119,8 +119,32 @@ function addPurchase(item, callback) {
 //      }
 //
 //   });
-//}
-//;
+//};
+
+
+function addBillToDb(creditor, callback) {
+   console.log("Inserting " + creditor);
+
+   var sql2 = 'INSERT INTO monthly_bills (e_type, creditor) VALUES ($1, $2)';
+
+   var params = [1, creditor];
+
+   pool.query(sql2, params, function (err, db_results) {
+      if (err) {
+         throw err;
+      } else {
+         var results = {
+            success: true,
+            list: db_results.rows
+         };
+
+         callback(null, results);
+      }
+
+   });
+};
+
+
 
 function getExpense_TypeFromDb(id, callback) {
    console.log("getExpense_TypeFromDb called with id ", id);
@@ -156,11 +180,11 @@ function getExpenseAllFromDb(id, callback) {
 module.exports = {
 
    findBills: findBills,
-//   addBillToDb: addBillToDb,
+   addBillToDb: addBillToDb,
    getExpense_TypeFromDb: getExpense_TypeFromDb,
    getExpenseAllFromDb: getExpenseAllFromDb,
    addPurchase: addPurchase,
-   listBills: listBills
+   listBillsDb: listBillsDb
 };
 
 

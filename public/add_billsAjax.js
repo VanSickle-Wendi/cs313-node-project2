@@ -9,16 +9,42 @@
 //		console.log("Back from the server with: ");
 //		console.log(data);
 //
-//		for (var i = 0; i < data.list.length; i++) {
-//			var add_bill = data.list[i];
-//
-//			$("#tableAddBill").append("<thead><tr><th scope='col'>Category</th><th scope='col'>Monthly Bill</th><th scope='col'>Monthly Payment</th><th scope='col'>Current Balance</th></tr></thead><tr><td>" + add_bill.e_type + "</td>" + "<td>" + add_bill.creditor + "</td>" + "<td>" + add_bill.due + "</td>" + "<td>" + add_bill.total_owed + "</td></tr>");
-//		}
-//
-//	});
+//			$("#tableAddBill").append("<tr><td>" + add_creditor + "</td></tr>");
+//		});
 //};
 
 
 
+//function addBills(event) {
+//   event.preventDefault();
+//   console.log("Adding new creditor...");
+//
+//   var creditor = $("#creditor").val();
+//   console.log("Creditor: " + creditor);
+//
+//
+//   $.post('/add', {creditor: creditor}, function (data) {
+//      console.log("Back from the server with: " + creditor);
+//      console.log(data);
+//
+//      $("#tableAddBill").append("<tr><td>" + creditor + "</td></tr>");
+//   });
+//};
 
+
+
+$("#newBillForm").on("submit", function (event) {
+   event.preventDefault();
+
+   var creditor = $("#creditor").val();
+   
+   alert(creditor);
+      $.post('/add', {creditor: creditor}, function (data) {
+      console.log("Back from the server with: " + creditor);
+      console.log(data);
+
+      $("#tableAddBill").append("<tr><td>" + creditor + "</td></tr>");
+   });
+   
+});
 

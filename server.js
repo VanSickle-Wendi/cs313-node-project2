@@ -4,6 +4,7 @@ const path = require('path');
 const pg = require('pg');
 require('dotenv').config();
 
+
 const budgetController = require("./controllers/budgetController.js");
 
 app.set('port', (process.env.PORT || 5000));
@@ -16,7 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get("/find", budgetController.find);
-//app.post('/addBills', budgetController.addBills);
+
+app.post('/add', budgetController.add);
 
 app.get('/getExpense_Type', budgetController.getExpense_Type);
 

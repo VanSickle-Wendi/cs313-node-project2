@@ -10,22 +10,12 @@ function find(req, res) {
    });
 }
 
-//function list(req, res) {
-//   var creditor = req.query.creditor;
-//
-//   budgetModel.listBills(creditor, function (error, results) {
-//      res.json(results);
-//   });   
-//}
-
 function list(req, res) {
 
-   budgetModel.listBills(function (error, result) {
+   budgetModel.listBillsDb(function (error, result) {
       res.status(200).json(result);
    });   
 }
-
-
 
 
 function purchase(req, res) {
@@ -40,13 +30,31 @@ function purchase(req, res) {
 
 
 //function addBills(req, res) {
-//   var addCreditor = req.body.creditor;
-////   budgetModel.addBillToDb()
+//   var add_creditor = req.body.add_creditor;
+//   console.log("Adding new bill: " + add_creditor);   
 //   
-//   console.log("Adding new bill to table: " + addCreditor);
+//   budgetModel.addBillToDb(add_creditor, function (error, result){
+//     
+//   
+//
 //   res.json({success:true});
-//   
+//     }); 
 //};
+
+
+function add(req, res) {
+   var creditor = req.body.creditor;
+   console.log("Adding new bill: " + creditor);   
+   
+   budgetModel.addBillToDb(creditor, function (error, result){
+     
+   res.json({result});
+     }); 
+};
+
+
+
+
 
 
 function getExpense_Type(req, res) {
@@ -82,7 +90,7 @@ function getExpenseAll(req, res) {
 
 module.exports = {
    find: find,
-//      addBills: addBills,
+   add: add,
    getExpense_Type: getExpense_Type,
    getExpenseAll: getExpenseAll,
    purchase: purchase,
