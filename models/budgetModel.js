@@ -70,7 +70,24 @@ function listBillsDb(callback) {
    });
 }
 
+function categoryDb(callback) {
 
+   var sql = "SELECT category FROM expense_type;";
+
+   pool.query(sql, function (err, db_results) {
+
+      if (err) {
+         throw err;
+      } else {
+         var results = {
+            success: true,
+            list: db_results.rows
+         };
+
+         callback(null, results);
+      }
+   });
+}
 
 
 
@@ -122,12 +139,12 @@ function addPurchase(item, callback) {
 //};
 
 
-function addBillToDb(creditor, callback) {
-   console.log("Inserting " + creditor);
+function addBillToDb(category, creditor, callback) {
+   console.log("Inserting " + category + " " + creditor);
 
    var sql2 = 'INSERT INTO monthly_bills (e_type, creditor) VALUES ($1, $2)';
 
-   var params = [1, creditor];
+   var params = [category, creditor];
 
    pool.query(sql2, params, function (err, db_results) {
       if (err) {
@@ -184,7 +201,8 @@ module.exports = {
    getExpense_TypeFromDb: getExpense_TypeFromDb,
    getExpenseAllFromDb: getExpenseAllFromDb,
    addPurchase: addPurchase,
-   listBillsDb: listBillsDb
+   listBillsDb: listBillsDb,
+   categoryDb: categoryDb
 };
 
 

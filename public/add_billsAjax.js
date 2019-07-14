@@ -36,14 +36,15 @@
 $("#newBillForm").on("submit", function (event) {
    event.preventDefault();
 
+   var category = $("#category").val();
    var creditor = $("#creditor").val();
    
-   alert(creditor);
-      $.post('/add', {creditor: creditor}, function (data) {
-      console.log("Back from the server with: " + creditor);
+   alert(category, creditor);
+      $.post('/add', {category: category, creditor: creditor}, function (data) {
+      console.log("Back from the server with: " + category + " " + creditor);
       console.log(data);
 
-      $("#tableAddBill").append("<tr><td>" + creditor + "</td></tr>");
+      $("#tableAddBill").append("<tr><td>" + category + "</td><td>" + creditor + "</td></tr>");
    });
    
 });

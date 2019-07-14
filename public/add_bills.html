@@ -26,15 +26,28 @@
          <main role="main" class="inner cover">
             <h1 class="cover-heading">New Bill</h1><br><br>
             <div class="row">
-               <div class="col-sm">
+               <div class="col-sm-1"></div>
+               <div class="col-sm-2">
+                  <button class="btn btn-lg btn-secondary" onclick="listCategories()">Categories</button><br><br><br><br>
+                  <div>
+
+                     <table class="table table-condensed table-striped table-bordered" id="tableList">
+
+                     </table>                  
+                  </div>
+               </div>
+               <div class="col-sm-6">
                   <form method="post" id="newBillForm">
-                     <input type="text" id="creditor" placeholder="New Bill"> <button type="submit" class="btn btn-lg btn-secondary">Add a Bill</button><br></form> 
+                     <input type="text" id="category" placeholder="Category Number">
+                     <input type="text" id="creditor" placeholder="New Bill"> <button type="submit" class="btn btn-lg btn-secondary">Add a Bill</button><br><br><br><br>
+                  </form> 
                   <div>
                      <table class="table table-condensed table-striped table-bordered" id="tableAddBill">
                      </table>
 
                   </div>               
                </div>
+               <div class="col-sm-3"></div>
             </div>
          </main>            
       </div>
@@ -44,6 +57,7 @@
          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
       <script src="add_billsAjax.js"></script>
+      <script src="find_billsAjax.js"></script>
    </body>
 </html>
 

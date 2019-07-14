@@ -28,6 +28,7 @@ app.get('/purchase', budgetController.purchase);
 
 app.get('/list', budgetController.list);
 
+app.get('/categories', budgetController.categories);
 
 
 

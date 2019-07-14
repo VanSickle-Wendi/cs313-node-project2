@@ -18,6 +18,14 @@ function list(req, res) {
 }
 
 
+function categories(req, res) {
+
+   budgetModel.categoryDb(function (error, result) {
+      res.status(200).json(result);
+   });   
+}
+
+
 function purchase(req, res) {
 
    var item = req.query.item;
@@ -43,10 +51,11 @@ function purchase(req, res) {
 
 
 function add(req, res) {
+   var category = req.body.category;
    var creditor = req.body.creditor;
-   console.log("Adding new bill: " + creditor);   
+   console.log("Adding new bill: " + category + " " + creditor);   
    
-   budgetModel.addBillToDb(creditor, function (error, result){
+   budgetModel.addBillToDb(category, creditor, function (error, result){
      
    res.json({result});
      }); 
@@ -94,5 +103,6 @@ module.exports = {
    getExpense_Type: getExpense_Type,
    getExpenseAll: getExpenseAll,
    purchase: purchase,
-   list:list
+   list:list,
+   categories: categories
 };
