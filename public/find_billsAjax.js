@@ -47,7 +47,7 @@ function listCategories() {
 		for (var i = 0; i < data.list.length; i++) {
 			var budget2 = data.list[i];
 
-			$("#tableList").append("<tr><td>" + budget2.category + "</td></tr>");
+			$("#tableList").append("<tr><td>" + budget2.id + "</td><td>" + budget2.category + "</td></tr>");
 		}
 
 	});

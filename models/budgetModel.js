@@ -72,7 +72,7 @@ function listBillsDb(callback) {
 
 function categoryDb(callback) {
 
-   var sql = "SELECT category FROM expense_type;";
+   var sql = "SELECT id, category FROM expense_type;";
 
    pool.query(sql, function (err, db_results) {
 
