@@ -30,7 +30,7 @@ function listBills() {
 		for (var i = 0; i < data.list.length; i++) {
 			var budget = data.list[i];
 
-			$("#tableList").append("<tr><td>" + budget.creditor + "</td></tr>");
+			$("#tableList").append("<tr><td>" + budget.id + "</td><td>" + budget.creditor + "</td></tr>");
 		}
 
 	});
@@ -48,6 +48,22 @@ function listCategories() {
 			var budget2 = data.list[i];
 
 			$("#tableList").append("<tr><td>" + budget2.id + "</td><td>" + budget2.category + "</td></tr>");
+		}
+
+	});
+};
+
+function listBills2() {
+	console.log("Listing Bills");
+
+	$.get("/list", function(data) {
+		console.log("Back from the server with: ");
+		console.log(data);
+
+		for (var i = 0; i < data.list.length; i++) {
+			var budget = data.list[i];
+
+			$("#tableList2").append("<tr><td>" + budget.id + "</td><td>" + budget.creditor + "</td></tr>");
 		}
 
 	});

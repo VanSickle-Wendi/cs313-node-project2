@@ -74,9 +74,9 @@ SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthl
 
 BEGIN;
 INSERT INTO monthly_bills (e_type, creditor)
-     VALUES ('5', 'Groceries');
+     VALUES ($1, $2);
 INSERT INTO amount (m_bill, due, total_owed)
-     VALUES ('5', '175', '0');
+     VALUES ($1, $2, $3);
 COMMIT;
 
 SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor = 'Groceries';

@@ -39,7 +39,6 @@ $("#newBillForm").on("submit", function (event) {
    var category = $("#category").val();
    var creditor = $("#creditor").val();
    
-   alert(category, creditor);
       $.post('/add', {category: category, creditor: creditor}, function (data) {
       console.log("Back from the server with: " + category + " " + creditor);
       console.log(data);

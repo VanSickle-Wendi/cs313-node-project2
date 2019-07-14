@@ -53,7 +53,7 @@ function findBills(creditor, callback) {
 
 function listBillsDb(callback) {
 
-   var sql = "SELECT creditor FROM monthly_bills;";
+   var sql = "SELECT id, creditor FROM monthly_bills;";
 
    pool.query(sql, function (err, db_results) {
 
