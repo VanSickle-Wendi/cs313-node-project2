@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
    <head>
-      <title>Add Bills</title>
+      <title>Add Amounts</title>
       <meta charset="UTF-8">
       <meta name ="author" content="Wendi Van Sickle">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,46 +14,35 @@
       <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
          <header class="masthead mb-auto">
             <div class="inner">
-               <h3 class="masthead-brand">Add a Bill to the Database</h3>
+               <h3 class="masthead-brand">Add Amounts to a Bill</h3>
                <nav class="nav nav-masthead justify-content-center">
                   <a class="nav-link" href="home.html">Home</a>
                   <a class="nav-link" href="find_bills.html">Find a Bill</a>
-                  <a class="nav-link active" href="add_bills.html">Add a Bill</a>
-                  <a class="nav-link" href="add_money.html">Add Amounts</a>
+                  <a class="nav-link" href="add_bills.html">Add a Bill</a>
+                  <a class="nav-link active" href="add_money.html">Add Amounts</a>
                   <a class="nav-link" href="purchases.html">Future Purchases</a>
                </nav>
             </div>
          </header>          
          <main role="main" class="inner cover">
-            <h1 class="cover-heading">New Bill</h1><br><br>
+            <h1 class="cover-heading">Add Amounts</h1><br><br>
             <div class="row">
                <div class="col-sm-2">
-                  <button class="btn btn-lg btn-secondary" onclick="listCategories()">Categories</button><br><br><br><br>
-                  <div>
-
-                     <table class="table table-condensed table-striped table-bordered" id="tableList">
-
-                     </table>                  
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <button class="btn btn-lg btn-secondary" onclick="listBills2()">List Bills</button><br><br><br><br>
+                  <button class="btn btn-lg btn-secondary" onclick="listBills3()">List Bills</button><br><br><br><br>
                   <div>
 
                      <table class="table table-condensed table-striped table-bordered" id="tableList2">
+                        
 
                      </table>                  
                   </div>
                </div>
                <div class="col-sm-7">
-                  <form method="post" id="newBillForm">
-                     <input type="text" id="category" placeholder="Category #" size="6">
-                     <input type="text" id="creditor" placeholder="New Bill" size="15"> 
-                     <input type="number" step="any" id="due" placeholder="Monthly Payment" size="12"> 
-                     <input type="number" step="any" id="total_owed" placeholder="Balance Owed" size="12"> <button type="submit" class="btn btn-lg btn-secondary">Add a Bill</button><br><br><br><br>
-                  </form> 
+
+                     <button type="submit" class="btn btn-lg btn-secondary" onclick="addMonthly()" >Add Monthly Payments</button><br><br><br><br>
+
                   <div>
-                     <table class="table table-condensed table-striped table-bordered" id="tableAddBill">
+                     <table class="table table-condensed table-striped table-bordered" id="tableAmount">
                      </table>
 
                   </div>               
@@ -67,7 +56,7 @@
          src="https://code.jquery.com/jquery-3.4.1.min.js"
          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
-      <script src="add_billsAjax.js"></script>
+      <script src="add_moneyAjax.js"></script>
       <script src="find_billsAjax.js"></script>
    </body>
 </html>

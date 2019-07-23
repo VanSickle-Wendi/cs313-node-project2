@@ -55,10 +55,10 @@ CREATE TABLE amount (
             ('4', 'Water Bill');
 
  INSERT INTO amount (m_bill, due, total_owed)
-     VALUES ('1', '1250.95', '245,577.67'),
-            ('2', '124.44', '3,618.28'),
+     VALUES ('1', '1,250', '245,577'),
+            ('2', '124', '3,618'),
             ('3', '50', '2,105'),
-            ('4', '92.63', '0');
+            ('4', '92', '0');
 
 CREATE TABLE purchase (
    id SERIAL PRIMARY KEY,
@@ -74,9 +74,13 @@ SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthl
 
 BEGIN;
 INSERT INTO monthly_bills (e_type, creditor)
-     VALUES ($1, $2);
+     VALUES ('1', 'Lawn Care');
 INSERT INTO amount (m_bill, due, total_owed)
-     VALUES ($1, $2, $3);
+     VALUES ('6', '30.00', '15');
 COMMIT;
 
-SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor = 'Groceries';
+SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill WHERE monthly_bills.creditor = 'Lawn Care';
+
+WITH new_bill AS (INSERT INTO monthly_bills (e_type, creditor) VALUES ('3', 'Capital One') RETURNING id) INSERT INTO amount (m_bill, due, total_owed) VALUES ((SELECT id FROM new_bill), '0', '850');
+
+SELECT SUM(due) FROM amount;

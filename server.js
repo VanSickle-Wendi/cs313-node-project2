@@ -20,6 +20,8 @@ app.get("/find", budgetController.find);
 
 app.post('/add', budgetController.add);
 
+app.post('/addMoney', budgetController.addMoney);
+
 app.get('/getExpense_Type', budgetController.getExpense_Type);
 
 app.get('/getExpenseAll/:id', budgetController.getExpenseAll);
@@ -27,6 +29,8 @@ app.get('/getExpenseAll/:id', budgetController.getExpenseAll);
 app.get('/purchase', budgetController.purchase);
 
 app.get('/list', budgetController.list);
+
+app.get('/list2', budgetController.list2);
 
 app.get('/categories', budgetController.categories);
 

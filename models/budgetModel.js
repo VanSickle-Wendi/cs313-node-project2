@@ -28,32 +28,29 @@ function findBills(creditor, callback) {
    });
 }
 
-//function listBills(creditor, callback) {
-//   console.log("Searching the DB for creditor: " + creditor);
-//
-//   var sql = "SELECT creditor FROM monthly_bills;";
-//
-//   var params = [creditor];
-//
-//   pool.query(sql, params, function (err, db_results) {
-//
-//      if (err) {
-//         throw err;
-//      } else {
-//         var results = {
-//            success: true,
-//            list: db_results.rows
-//         };
-//
-//         callback(null, results);
-//      }
-//   });
-//}
-
 
 function listBillsDb(callback) {
 
    var sql = "SELECT id, creditor FROM monthly_bills;";
+
+   pool.query(sql, function (err, db_results) {
+
+      if (err) {
+         throw err;
+      } else {
+         var results = {
+            success: true,
+            list: db_results.rows
+         };
+
+         callback(null, results);
+      }
+   });
+}
+
+function listBills2Db(callback) {
+
+   var sql = "SELECT e_type, creditor, due, total_owed FROM expense_type JOIN monthly_bills ON expense_type.id = monthly_bills.e_type JOIN amount ON monthly_bills.id = amount.m_bill";
 
    pool.query(sql, function (err, db_results) {
 
@@ -116,37 +113,38 @@ function addPurchase(item, callback) {
 
 
 
-//function addBillToDb(add_creditor, callback) {
-//   console.log("Inserting " + add_creditor);
-//
-//   var sql2 = "INSERT INTO monthly_bills (creditor) VALUES ($1);";
-//
-//   var params = [add_creditor];
-//
-//   pool.query(sql2, params, function (err, db_results) {
-//      if (err) {
-//         throw err;
-//      } else {
-//         var results = {
-//            success: true,
-//            list: db_results.rows
-//         };
-//
-//         callback(null, results);
-//      }
-//
-//   });
-//};
+function addBillToDb(e_type, creditor, due, total_owed, callback) {
+   console.log("Inserting " + e_type + " " + creditor + " " + due + " " + total_owed);
 
+//   var sql2 = 'INSERT INTO monthly_bills (e_type, creditor) VALUES ($1, $2)';
+   
+   var sql2 = 'WITH new_bill AS (INSERT INTO monthly_bills (e_type, creditor) VALUES ($1, $2) RETURNING id) INSERT INTO amount (m_bill, due, total_owed) VALUES ((SELECT id FROM new_bill), $3, $4)';
 
-function addBillToDb(category, creditor, callback) {
-   console.log("Inserting " + category + " " + creditor);
-
-   var sql2 = 'INSERT INTO monthly_bills (e_type, creditor) VALUES ($1, $2)';
-
-   var params = [category, creditor];
+   var params = [e_type, creditor, due, total_owed];
 
    pool.query(sql2, params, function (err, db_results) {
+      if (err) {
+         throw err;
+      } else {
+         var results = {
+            success: true,
+            list: db_results.rows
+         };
+
+         callback(null, results);
+      }
+
+   });
+};
+
+function addAmountsToDb(m_bill, due, total_owed, callback) {
+   console.log("Inserting " + m_bill + " " + due + " " + total_owed);
+
+   var sql3 = 'INSERT INTO amount (m_bill, due, total_owed) VALUES ($1, $2, $3)';
+
+   var params = [m_bill, due, total_owed];
+
+   pool.query(sql3, params, function (err, db_results) {
       if (err) {
          throw err;
       } else {
@@ -202,22 +200,7 @@ module.exports = {
    getExpenseAllFromDb: getExpenseAllFromDb,
    addPurchase: addPurchase,
    listBillsDb: listBillsDb,
-   categoryDb: categoryDb
+   listBills2Db: listBills2Db,
+   categoryDb: categoryDb,
+   addAmountsToDb: addAmountsToDb
 };
-
-
-
-
-//
-//router.post('/users', function(req, res, next) {
-//
-//    client.query('INSERT INTO users(username, password) VALUES($1, $2) returning id', 
-//    [req.body.username, req.body.password], function(err, result) {
-//      done();
-//      if(err) {
-//        return console.error('error running query', err);
-//      }
-//      res.send(result);
-//    });
-//  });
-//});

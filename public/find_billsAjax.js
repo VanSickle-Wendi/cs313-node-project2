@@ -68,3 +68,22 @@ function listBills2() {
 
 	});
 };
+
+
+//This is for the add_money page
+function listBills3() {
+	console.log("Listing Bills");
+
+	$.get("/list2", function(data) {
+		console.log("Back from the server with: ");
+		console.log(data);
+
+            $("#tableList2").append("<tr><th>Creditor</th><th>Monthly Payment</th><th>Balance Owed</th></tr>");
+		for (var i = 0; i < data.list.length; i++) {
+			var budget3 = data.list[i];
+
+			$("#tableList2").append("<tr><td>" + budget3.creditor + "</td>" + "<td>" + budget3.due + "</td>" + "<td>" + budget3.total_owed + "</td></tr>");
+		}
+
+	});
+};
