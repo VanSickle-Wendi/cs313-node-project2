@@ -24,7 +24,7 @@ function listBills() {
 	console.log("Listing Bills");
 
 	$.get("/list", function(data) {
-		console.log("Back from the server with: ");
+		console.log("Back from the server with: " + data);
 		console.log(data);
 
 		for (var i = 0; i < data.list.length; i++) {
@@ -75,7 +75,7 @@ function listBills3() {
 	console.log("Listing Bills");
 
 	$.get("/list2", function(data) {
-		console.log("Back from the server with: ");
+		console.log("Back from the server with: " + data);
 		console.log(data);
 
             $("#tableList2").append("<tr><th>Creditor</th><th>Monthly Payment</th><th>Balance Owed</th></tr>");

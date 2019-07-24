@@ -24,6 +24,15 @@ function list2(req, res) {
    });   
 }
 
+//function list2(req, res) {
+//   
+//   var sum = req.query.sum;
+//
+//   budgetModel.listBills2Db(sum, function (error, result) {
+//      res.status(200).json(result);
+//   });   
+//}
+
 function categories(req, res) {
 
    budgetModel.categoryDb(function (error, result) {
@@ -56,19 +65,21 @@ function add(req, res) {
 };
 
 
-function addMoney(req, res) {
-   var m_bill = req.body.m_bill;
-   var due = req.body.due;
-   var total_owed = total_owed;
-   console.log("Adding amounts: " + m_bill+ " " + due, " " + total_owed);   
-   
-   budgetModel.addAmountsToDb(m_bill, due, total_owed, function (error, result){
+function totalPayments(req, res) {
+ 
+   budgetModel.totalPaymentsFromDb(function (error, results){
      
-   res.json({result});
+   res.json({results});
      }); 
 };
 
-
+function totalBalances(req, res) {
+ 
+   budgetModel.totalBalancesFromDb(function (error, results){
+     
+   res.json({results});
+     }); 
+};
 
 
 function getExpense_Type(req, res) {
@@ -111,5 +122,6 @@ module.exports = {
    list: list,
    list2: list2,
    categories: categories,
-   addMoney: addMoney
+   totalPayments: totalPayments,
+   totalBalances: totalBalances
 };

@@ -20,14 +20,13 @@
                   <a class="nav-link" href="find_bills.html">Find a Bill</a>
                   <a class="nav-link" href="add_bills.html">Add a Bill</a>
                   <a class="nav-link active" href="add_money.html">Add Amounts</a>
-                  <a class="nav-link" href="purchases.html">Future Purchases</a>
                </nav>
             </div>
          </header>          
          <main role="main" class="inner cover">
             <h1 class="cover-heading">Add Amounts</h1><br><br>
             <div class="row">
-               <div class="col-sm-2">
+               <div class="col-sm-3">
                   <button class="btn btn-lg btn-secondary" onclick="listBills3()">List Bills</button><br><br><br><br>
                   <div>
 
@@ -37,17 +36,28 @@
                      </table>                  
                   </div>
                </div>
-               <div class="col-sm-7">
+               <div class="col-sm-1"></div>
+               <div class="col-sm-3">
 
-                     <button type="submit" class="btn btn-lg btn-secondary" onclick="addMonthly()" >Add Monthly Payments</button><br><br><br><br>
+                     <button type="submit" class="btn btn-lg btn-secondary" onclick="totalDue()" >Add Monthly Payments</button><br><br><br><br>
 
                   <div>
-                     <table class="table table-condensed table-striped table-bordered" id="tableAmount">
+                     <table class="table table-condensed table-striped table-bordered" id="tableTotalDue">
                      </table>
 
                   </div>               
                </div>
-               <div class="col-sm-2"></div>
+               <div class="col-sm-1"></div>
+               <div class="col-sm-3">
+                  <button type="submit" class="btn btn-lg btn-secondary" onclick="totalBalanceDue()" >Add Total Balances</button><br><br><br><br>
+                  
+                  <div>
+                     <table class="table table-condensed table-striped table-bordered" id="tableTotalBalance">
+                     </table>
+
+                  </div>
+               </div>
+               <div class="col-sm-1"></div>
             </div>
          </main>            
       </div>

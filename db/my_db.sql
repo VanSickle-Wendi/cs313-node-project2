@@ -42,19 +42,19 @@ CREATE TABLE monthly_bills (
 
 CREATE TABLE amount (
    id SERIAL PRIMARY KEY,
-   m_bill INT REFERENCES monthly_bills(id),
+   m_bill INT REFERENCES monthly_bills(id) ON DELETE CASCADE,
    due MONEY,
    total_owed MONEY
 );
 
 
- INSERT INTO monthly_bills (e_type, creditor)
+INSERT INTO monthly_bills (e_type, creditor)
      VALUES ('1', 'Mortgage'),
             ('2', 'Car Payment'),
             ('3', 'Chase'),
             ('4', 'Water Bill');
 
- INSERT INTO amount (m_bill, due, total_owed)
+INSERT INTO amount (m_bill, due, total_owed)
      VALUES ('1', '1,250', '245,577'),
             ('2', '124', '3,618'),
             ('3', '50', '2,105'),
@@ -84,3 +84,5 @@ SELECT category, e_type, creditor, due, total_owed FROM expense_type JOIN monthl
 WITH new_bill AS (INSERT INTO monthly_bills (e_type, creditor) VALUES ('3', 'Capital One') RETURNING id) INSERT INTO amount (m_bill, due, total_owed) VALUES ((SELECT id FROM new_bill), '0', '850');
 
 SELECT SUM(due) FROM amount;
+
+

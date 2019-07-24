@@ -137,20 +137,17 @@ function addBillToDb(e_type, creditor, due, total_owed, callback) {
    });
 };
 
-function addAmountsToDb(m_bill, due, total_owed, callback) {
-   console.log("Inserting " + m_bill + " " + due + " " + total_owed);
+function totalPaymentsFromDb(callback) {
 
-   var sql3 = 'INSERT INTO amount (m_bill, due, total_owed) VALUES ($1, $2, $3)';
-
-   var params = [m_bill, due, total_owed];
-
-   pool.query(sql3, params, function (err, db_results) {
+   var sql2 = "SELECT SUM(due)FROM amount";
+   
+   pool.query(sql2, function (err, db_results) {
       if (err) {
          throw err;
       } else {
          var results = {
             success: true,
-            list: db_results.rows
+            sum: db_results.rows
          };
 
          callback(null, results);
@@ -159,6 +156,24 @@ function addAmountsToDb(m_bill, due, total_owed, callback) {
    });
 };
 
+function totalBalancesFromDb(callback) {
+
+   var sql3 = "SELECT SUM(total_owed)FROM amount";
+   
+   pool.query(sql3, function (err, db_results) {
+      if (err) {
+         throw err;
+      } else {
+         var results = {
+            success: true,
+            sum: db_results.rows
+         };
+
+         callback(null, results);
+      }
+
+   });
+};
 
 
 function getExpense_TypeFromDb(id, callback) {
@@ -202,5 +217,7 @@ module.exports = {
    listBillsDb: listBillsDb,
    listBills2Db: listBills2Db,
    categoryDb: categoryDb,
-   addAmountsToDb: addAmountsToDb
+   totalPaymentsFromDb: totalPaymentsFromDb,
+   totalBalancesFromDb: totalBalancesFromDb
+   
 };
